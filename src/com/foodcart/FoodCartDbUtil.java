@@ -11,7 +11,7 @@ import java.util.List;
 public class FoodCartDbUtil {
 	public static List<Food> getFoodList() throws ClassNotFoundException, SQLException{
 		
-		String url = "jdbc:mysql://localhost:3306/Product?useSSL=false";
+		String url = "jdbc:mysql://localhost:3306/food?useSSL=false";
 		String userName = "root";
 		String password = "uthsara29";
 		

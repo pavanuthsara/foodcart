@@ -22,6 +22,7 @@ public class FoodCart extends HttpServlet {
 		try {
 			List<Food> foodItems = FoodCartDbUtil.getFoodList();
 			request.setAttribute("foodItems", foodItems);
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
