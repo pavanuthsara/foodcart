@@ -1,6 +1,8 @@
 package com.foodcart;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,8 +17,14 @@ public class FoodCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//get the data from the database(model)
-		String[] foodItems = {"biriyani", "Pizza", "kfc chicken"};
-		request.setAttribute("foodItems", foodItems);
+		/*String[] foodItems = {"biriyani", "Pizza", "kfc chicken"};
+		request.setAttribute("foodItems", foodItems); */
+		try {
+			List<Food> foodItems = FoodCartDbUtil.getFoodList();
+			request.setAttribute("foodItems", foodItems);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//redirect to a different page(view)
 		RequestDispatcher dispatcher = request.getRequestDispatcher("show-food.jsp");
